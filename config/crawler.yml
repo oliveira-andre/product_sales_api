@@ -1,0 +1,17 @@
+default: &default
+  sites: ['olx']
+
+  olx:
+    link: 'https://ro.olx.com.br/?q=%{query}'
+    card_list: '#ad-list'
+    name: 'h2.fnmrjs-10.deEIZJ'
+    price: 'p.fnmrjs-16 jqSHIm'
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
