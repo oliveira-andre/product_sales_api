@@ -6,6 +6,7 @@ default: &default
     cards: '#ad-list li'
     name: 'h2.fnmrjs-10.deEIZJ'
     price: 'p.fnmrjs-16.jqSHIm'
+    next_page: 'li.sc-1m4ygug-0.ilgdSS a'
 
 development:
   <<: *default
