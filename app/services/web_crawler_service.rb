@@ -18,12 +18,11 @@ class WebCrawlerService
         @current_deep = number
         @current_site = site.to_sym
         set_card_and_product
-
-        return @products.uniq unless valid_next_page?
-
-        @next_page_uri = next_page_uri
+        @next_page_uri = next_page_uri if valid_next_page?
       end
     end
+
+    @products
   end
 
   private
