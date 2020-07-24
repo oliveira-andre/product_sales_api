@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
 module Response
-  def success_response(data:, model:, includes: '', status: :ok)
-    return unless data || model
+  def success_response(params = {})
+    return unless params[:data] || params[:model]
 
-    if data.respond_to?('each')
-      render json: data,
-             each_serializer: "Api::V1::#{model}Serializer".constantize,
-             includes: includes.split(','), status: status
-    else
-      render json: data, serializer: "Api::V1::#{model}Serializer".constantize,
-             includes: includes.split(','), status: status
-    end
+    render json: serializer(params[:model]).constantize.new(data).serialize,
+           status: status
+  end
+
+  def serializer(model)
+    "Api::V1::#{model}Serializer"
   end
 
   def error_response
