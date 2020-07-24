@@ -4,7 +4,7 @@ module Api
   module V1
     class SkillsController < ApplicationController
       def index
-        SkillsIndex.new(index_params).execute
+        success_response(SkillsIndex.new(index_params).execute)
       end
 
       private
