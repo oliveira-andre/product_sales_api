@@ -3,7 +3,15 @@
 module Api
   module V1
     class SkillsController < ApplicationController
-      def index; end
+      def index
+        SkillsIndex.new(index_params).execute
+      end
+
+      private
+
+      def index_params
+        { skill_name: params[:alexa_skill_name], query: params[:query] }
+      end
     end
   end
 end
