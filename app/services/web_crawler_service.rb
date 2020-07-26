@@ -7,7 +7,7 @@ class WebCrawlerService
   def initialize(query, deep = 0)
     @config = Rails.application.config_for(:crawler)
     @sites = @config[:sites]
-    @query = query
+    @query = query[:query]
     @deep = deep
     @products = []
   end
@@ -28,7 +28,7 @@ class WebCrawlerService
   private
 
   def uri
-    @config.dig(@current_site, :uri) + @query
+    "#{@config.dig(@current_site, :uri)}#{@query}"
   end
 
   def page
@@ -47,7 +47,7 @@ class WebCrawlerService
   end
 
   def product_object
-    { name: name, price: price, site: @current_site }.compact
+    Product.new(name: name, price: price, site: @current_site)
   end
 
   def name
