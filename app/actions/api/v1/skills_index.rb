@@ -16,7 +16,7 @@ module Api
       end
 
       def search_product?
-        SEARCH_PRODUCT_CONSTANTS.include?(skill_name)
+        skill_name == 'product_finder'
       end
     end
   end
