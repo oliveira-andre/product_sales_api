@@ -5,7 +5,7 @@ module Api
     class SkillsController < ApplicationController
       def index
         success_response(
-          data: SkillsIndex.new(index_params).execute,
+          data: SkillsIndex.new(index_params).execute.take(5),
           model: 'Product'
         )
       end
