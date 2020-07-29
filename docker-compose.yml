@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_PASSWORD: root
 
-  web_app:
+  app:
     build: .
     command: bash start.sh
     ports:
